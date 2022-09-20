@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'nwt-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   // private property to store name value
@@ -26,5 +26,7 @@ export class HomeComponent implements OnInit {
   /**
    * OnInit implementation
    */
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
 }

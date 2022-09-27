@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "server": "cd ./_server && node ./main.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -21,6 +22,16 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@nestjs/common": "^8.0.11",
+    "@nestjs/core": "^8.0.11",
+    "@nestjs/platform-fastify": "^8.0.11",
+    "@nestjs/swagger": "^5.1.0",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "config": "^3.3.6",
+    "fastify-swagger": "^4.12.4",
+    "js-yaml": "^4.1.0",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

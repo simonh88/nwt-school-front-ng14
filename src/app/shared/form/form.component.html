@@ -1,0 +1,69 @@
+<h2 mat-dialog-title>Create new person</h2>
+
+<mat-dialog-content>
+  <form #f="ngForm">
+
+    <table class="full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="First name *" ngModel name="firstname"/>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Last Name *" ngModel name="lastname"/>
+          </mat-form-field>
+        </td>
+        <td class="align-right">
+          <!-- not required by API, so we put static content which is not editable and not sent to the API -->
+          <img width="112" [src]="photo"/>
+        </td>
+      </tr>
+    </table>
+
+    <p>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email *" ngModel name="email"/>
+      </mat-form-field>
+    </p>
+
+    <p ngModelGroup="address">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Address" ngModel name="street"/>
+      </mat-form-field>
+    </p>
+
+    <table class="full-width" cellspacing="0" ngModelGroup="address">
+      <tr>
+        <td>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="City" ngModel name="city"/>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Postal Code" ngModel name="postalCode"/>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Phone * (ex: 0612345678)" ngModel name="phone"/>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-checkbox [(ngModel)]="isManager" name="isManager">Manager</mat-checkbox>
+    </p>
+
+    <!-- required by API, so we put static content which is not editable but sent to the API -->
+    <input type="hidden" [ngModel]="entity" name="entity">
+  </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="cancel()">Cancel</button>
+  <button mat-button color="primary" type="submit" (click)="add(f.value)">Save</button>
+</mat-dialog-actions>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../shared/types/person.type';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { defaultIfEmpty, filter } from 'rxjs';
+import { defaultIfEmpty, filter, mergeMap, Observable } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 
@@ -83,10 +83,27 @@ export class PeopleComponent implements OnInit {
 
     // open modal
     this._peopleDialog = this._dialog.open(DialogComponent, {
-      width: '500px'
+      width: '500px',
+      disableClose: true
     });
 
     // subscribe to afterClosed observable to set dialog status and do process
-    this._peopleDialog.afterClosed().subscribe(_ => this._dialogStatus = 'inactive');
+    this._peopleDialog.afterClosed()
+      .pipe(
+        filter((person: Person | undefined) => !!person),
+        mergeMap((person: Person | undefined) => this._add(person))
+      )
+      .subscribe({
+        next: (person: Person) => this._people = this._people.concat(person),
+        error: () => this._dialogStatus = 'inactive',
+        complete: () => this._dialogStatus = 'inactive'
+      });
+  }
+
+  /**
+   * Add new person
+   */
+  private _add(person: Person | undefined): Observable<Person> {
+    return this._http.post<Person>(this._backendURL.allPeople, person, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 }

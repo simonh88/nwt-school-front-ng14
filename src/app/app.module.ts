@@ -18,12 +18,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './shared/dialog/dialog.component';
+import { FormComponent } from './shared/form/form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent, DialogComponent],
+  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent, DialogComponent, FormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     MatToolbarModule,
     MatCardModule,

@@ -1,6 +1,6 @@
 <mat-toolbar class="extend-toolbar">
   <span>
-    <a href="javascript:void(0);">
+    <a [routerLink]="['/']">
       <img src="assets/images/logo.svg" aria-label="nwt" alt="NWT">
     </a>
   </span>
@@ -8,9 +8,8 @@
   <span class="flex"></span>
 
   <span>
-    <a href="javascript:void(0);">List</a>
+    <a [routerLink]="['/people']">List</a>
   </span>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
-

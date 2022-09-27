@@ -11,9 +11,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
+import { PeopleComponent } from './people/people.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PersonComponent],
+  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

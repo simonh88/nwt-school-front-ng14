@@ -10,9 +10,10 @@ export const environment = {
     port: '3000',
     endpoints: {
       allPeople: '/people',
-      randomPeople: '/people/random'
-    }
-  }
+      randomPeople: '/people/random',
+      onePeople: '/people/:id',
+    },
+  },
 };
 
 /*

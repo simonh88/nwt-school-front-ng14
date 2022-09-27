@@ -12,9 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { PeopleComponent } from './people/people.component';
+import { CardComponent } from './shared/card/card.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent],
+  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,52 +1,5 @@
 <section>
-  <mat-card class="mat-whiteframe-2dp">
-    <mat-card-title-group>
-      <img mat-card-md-image src="{{ person.photo }}" />
-      <mat-card-title>
-        <a href="javascript:void(0);">
-          <span>{{ person.firstname }} {{ person.lastname }}</span>
-        </a>
-      </mat-card-title>
-      <mat-card-subtitle>{{ person.entity }}</mat-card-subtitle>
-      <mat-card-subtitle class="contact-info">
-        <mat-icon svgIcon="icon-mail"></mat-icon>
-        <a
-          href="mailto:{{ person.firstname }} {{ person.lastname }}&lt;{{
-            person.email
-          }}&gt;"
-          title="Send an email to {{ person.firstname }} {{ person.lastname }}"
-          class="truncate"
-          >{{ person.email }}</a
-        >
-      </mat-card-subtitle>
-      <mat-card-subtitle class="contact-info">
-        <mat-icon svgIcon="icon-phone"></mat-icon>
-        <a href="tel:{{ person.phone }}" title="Call {{ person.firstname }}">{{
-          person.phone
-        }}</a>
-      </mat-card-subtitle>
-    </mat-card-title-group>
-    <mat-card-content>
-      <div class="contact-info">
-        Manager&nbsp;:&nbsp;
-        <a href="javascript:void(0);">{{ person.manager }}</a>
-      </div>
-      <div class="contact-info">
-        Location&nbsp;:&nbsp;<a href="javascript:void(0);">DEVLAND</a>
-      </div>
-      <div class="buttons-info">
-        <a mat-button title="Locate" href="javascript:void(0);">
-          <mat-icon svgIcon="icon-maps"></mat-icon>
-        </a>
-        <a mat-button title="Edit" href="javascript:void(0);">
-          <mat-icon svgIcon="icon-edit"></mat-icon>
-        </a>
-        <button mat-button title="Delete">
-          <mat-icon svgIcon="icon-delete"></mat-icon>
-        </button>
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <nwt-card [person]="person"></nwt-card>
 </section>
 
 <button mat-fab (click)="random()">

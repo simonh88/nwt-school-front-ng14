@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Person } from '../shared/types/person.type';
+import { defaultIfEmpty, filter } from 'rxjs';
 
 @Component({
   selector: 'nwt-person',
@@ -44,6 +45,10 @@ export class PersonComponent implements OnInit {
    */
   ngOnInit(): void {
     this._http.get<Person[]>(this._backendURL.allPeople)
+      .pipe(
+        filter( (people: Person[]) => !!people),
+        defaultIfEmpty([{} as Person])
+      )
       .subscribe({ next: (people: Person[]) => this._person = people[0] });
   }
 
@@ -52,6 +57,10 @@ export class PersonComponent implements OnInit {
    */
   random(): void {
     this._http.get<Person>(this._backendURL.randomPeople)
+      .pipe(
+        filter( (person: Person) => !!person),
+        defaultIfEmpty({} as Person)
+      )
       .subscribe({ next: (person: Person) => this._person = person });
   }
 }

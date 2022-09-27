@@ -1,3 +1,3 @@
 <section>
-  <nwt-card [person]="person" *ngFor="let person of people"></nwt-card>
+  <nwt-card [person]="person" (deletePerson)="delete($event)" *ngFor="let person of people"></nwt-card>
 </section>

@@ -20,9 +20,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { FormComponent } from './shared/form/form.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent, DialogComponent, FormComponent],
+  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent, DialogComponent, FormComponent, UpdateComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,3 +1,7 @@
 <section>
   <nwt-card [person]="person" (deletePerson)="delete($event)" *ngFor="let person of people"></nwt-card>
 </section>
+
+<button (click)="showDialog()" *ngIf="dialogStatus === 'inactive'" mat-fab color="accent">
+  <i class="material-icons">add</i>
+</button>

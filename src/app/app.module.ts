@@ -13,9 +13,14 @@ import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { PeopleComponent } from './people/people.component';
 import { CardComponent } from './shared/card/card.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './shared/dialog/dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent],
+  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent, DialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -25,6 +30,10 @@ import { CardComponent } from './shared/card/card.component';
     MatButtonModule,
     MatListModule,
     MatIconModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
     AppRoutingModule
   ],
   providers: [],

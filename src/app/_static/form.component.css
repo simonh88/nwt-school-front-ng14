@@ -1,0 +1,13 @@
+img {
+  border-radius: 50%;
+  margin-right: 18px;
+  -webkit-filter: grayscale(100%);
+}
+
+.align-right {
+  text-align: right;
+}
+
+.full-width {
+  width: 100%;
+}

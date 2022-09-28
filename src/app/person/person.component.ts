@@ -6,7 +6,7 @@ import { Person } from '../shared/types/person.type';
 @Component({
   selector: 'nwt-person',
   templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css']
+  styleUrls: ['./person.component.css'],
 })
 export class PersonComponent implements OnInit {
   // private property to store person value
@@ -29,7 +29,14 @@ export class PersonComponent implements OnInit {
 
     // build all backend urls
     // @ts-ignore
-    Object.keys(environment.backend.endpoints).forEach((k: string) => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
+    Object.keys(environment.backend.endpoints).forEach(
+      (k: string) =>
+        (this._backendURL[k] = `${baseUrl}${
+          environment.backend.endpoints[
+            k as keyof typeof environment.backend.endpoints
+          ]
+        }`)
+    );
   }
 
   /**
@@ -43,15 +50,17 @@ export class PersonComponent implements OnInit {
    * OnInit implementation
    */
   ngOnInit(): void {
-    this._http.get<Person[]>(this._backendURL.allPeople)
-      .subscribe({ next: (people: Person[]) => this._person = people[0] });
+    this._http
+      .get<Person[]>(this._backendURL.allPeople)
+      .subscribe({ next: (people: Person[]) => (this._person = people[0]) });
   }
 
   /**
    * Returns random people
    */
   random(): void {
-    this._http.get<Person>(this._backendURL.randomPeople)
-      .subscribe({ next: (person: Person) => this._person = person });
+    this._http
+      .get<Person>(this._backendURL.randomPeople)
+      .subscribe({ next: (person: Person) => (this._person = person) });
   }
 }

@@ -37,7 +37,7 @@
       <a mat-button title="Locate" href="javascript:void(0);">
         <mat-icon svgIcon="icon-maps"></mat-icon>
       </a>
-      <a mat-button title="Edit" href="javascript:void(0);">
+      <a mat-button title="Edit" [routerLink]="['/edit', person.id]">
         <mat-icon svgIcon="icon-edit"></mat-icon>
       </a>
       <button mat-button title="Delete" (click)="delete(person)">

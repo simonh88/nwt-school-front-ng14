@@ -20,6 +20,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CardComponent,
     DialogComponent,
     FormComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,

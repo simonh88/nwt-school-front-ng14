@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../types/person.type';
-import { MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'nwt-add-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: [ './dialog.component.css' ]
+  styleUrls: ['./dialog.component.css'],
 })
 export class DialogComponent implements OnInit {
-
   /**
    * Component constructor
    */
-  constructor(private _dialogRef: MatDialogRef<DialogComponent>) {
-  }
+  constructor(private _dialogRef: MatDialogRef<DialogComponent>) {}
 
   /**
    * OnInit implementation
    */
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * Function to cancel the process and close the modal

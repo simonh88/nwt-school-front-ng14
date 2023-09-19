@@ -2,15 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
+import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PersonComponent } from './person/person.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-// import { AppRoutingModule } from './app-routing.module';
+import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, PersonComponent],
@@ -22,11 +21,10 @@ import { MatListModule } from '@angular/material/list';
     MatCardModule,
     MatButtonModule,
     MatListModule,
-    MatIconModule/*,
-    AppRoutingModule*/
+    MatIconModule /*,
+    AppRoutingModule*/,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

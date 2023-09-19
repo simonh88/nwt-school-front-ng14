@@ -3,7 +3,7 @@ import { Person } from '../shared/types/person.type';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { defaultIfEmpty, filter, mergeMap, Observable } from 'rxjs';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 
 @Component({

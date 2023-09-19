@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../types/person.type';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 
 @Component({
   selector: 'nwt-add-dialog',

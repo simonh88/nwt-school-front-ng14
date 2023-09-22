@@ -5,11 +5,10 @@
 <section>
   <mat-list>
     <mat-list-item *ngFor="let person of people" class="mat-whiteframe-2dp mat-card">
-      <img mat-list-avatar src="{{ person.photo }}">
-      <h3 matLine> {{person.firstname}} {{person.lastname}} </h3>
-      <p matLine>
-        <span> {{person.entity}} </span>
-        — <span>{{person.email}} </span>
+      <img matListItemAvatar src="{{ person.photo }}"/>
+      <span matListItemTitle>{{person.firstname}} {{person.lastname}} </span>
+      <p matListItemLine>
+        <span> {{person.entity}} </span> — <span>{{person.email}} </span>
       </p>
     </mat-list-item>
   </mat-list>

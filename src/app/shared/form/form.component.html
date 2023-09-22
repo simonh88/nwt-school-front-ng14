@@ -1,68 +1,59 @@
-<h2 mat-dialog-title *ngIf="isUpdateMode">
-  Update {{ model.firstname }} {{ model.lastname }}
-</h2>
+<h2 mat-dialog-title *ngIf="isUpdateMode">Update {{ model.firstname }} {{ model.lastname }}</h2>
 <h2 mat-dialog-title *ngIf="!isUpdateMode">Create new person</h2>
 
 <mat-dialog-content>
-  <form #f="ngForm">
+  <form novalidate #f="ngForm">
+
     <p *ngIf="isUpdateMode">
       <mat-form-field class="full-width">
-        <input
-          matInput
-          placeholder="ID (disabled)"
-          disabled
-          name="id"
-          [ngModel]="model.id"
-        />
+        <input matInput placeholder="ID (disabled)" disabled  name="id" [ngModel]="model.id" />
       </mat-form-field>
     </p>
 
     <table class="full-width" cellspacing="0">
       <tr>
         <td>
-          <mat-form-field class="full-width">
-            <input
-              matInput
-              placeholder="First name *"
-              [(ngModel)]="model.firstname"
-              name="firstname"
-            />
+          <mat-form-field class="full-width" [class.mgb15]="firstname.dirty && firstname.invalid">
+            <input matInput placeholder="First name" [(ngModel)]="model.firstname" minlength="2" required name="firstname" #firstname="ngModel"/>
+            <mat-error *ngIf="firstname.dirty && firstname.hasError('required')">
+              First name is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="firstname.dirty && firstname.hasError('minlength')">
+              First name is <strong>2 chars min</strong>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input
-              matInput
-              placeholder="Last Name *"
-              [(ngModel)]="model.lastname"
-              name="lastname"
-            />
+            <input matInput placeholder="Last Name" [(ngModel)]="model.lastname" minlength="2" required name="lastname" #lastname="ngModel"/>
+            <mat-error *ngIf="lastname.dirty && lastname.hasError('required')">
+              Last name is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="lastname.dirty && lastname.hasError('minlength')">
+              Last name is <strong>2 chars min</strong>
+            </mat-error>
           </mat-form-field>
         </td>
         <td class="align-right">
           <!-- not required by API, so we put static content which is not editable and not sent to the API -->
-          <img width="112" [src]="model.photo" />
+          <img width="112" [src]="model.photo"/>
         </td>
       </tr>
     </table>
 
     <p>
       <mat-form-field class="full-width">
-        <input
-          matInput
-          placeholder="Email *"
-          [(ngModel)]="model.email"
-          name="email"
-        />
+        <input matInput placeholder="Email" [(ngModel)]="model.email" required name="email" #email="ngModel"/>
+        <mat-error *ngIf="email.dirty && email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
     </p>
 
     <p ngModelGroup="address">
       <mat-form-field class="full-width">
-        <input
-          matInput
-          placeholder="Address"
-          [(ngModel)]="model.address.street"
-          name="street"
-        />
+        <input matInput placeholder="Address" [(ngModel)]="model.address.street" required name="street" #street="ngModel"/>
+        <mat-error *ngIf="street.dirty && street.hasError('required')">
+          Address is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
     </p>
 
@@ -70,22 +61,18 @@
       <tr>
         <td>
           <mat-form-field class="full-width">
-            <input
-              matInput
-              placeholder="City"
-              [(ngModel)]="model.address.city"
-              name="city"
-            />
+            <input matInput placeholder="City" [(ngModel)]="model.address.city" required name="city" #city="ngModel"/>
+            <mat-error *ngIf="city.dirty && city.hasError('required')">
+              City is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
         </td>
         <td>
           <mat-form-field class="full-width">
-            <input
-              matInput
-              placeholder="Postal Code"
-              [(ngModel)]="model.address.postalCode"
-              name="postalCode"
-            />
+            <input matInput placeholder="Postal Code" [(ngModel)]="model.address.postalCode" required name="postalCode" #postalCode="ngModel"/>
+            <mat-error *ngIf="postalCode.dirty && postalCode.hasError('required')">
+              Postal Code is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
         </td>
       </tr>
@@ -93,29 +80,27 @@
 
     <p>
       <mat-form-field class="full-width">
-        <input
-          matInput
-          placeholder="Phone * (ex: 0612345678)"
-          [(ngModel)]="model.phone"
-          name="phone"
-        />
+        <input matInput placeholder="Phone (ex: 0612345678)" [(ngModel)]="model.phone" pattern="(0|\+33)\d{9}" required name="phone" #phone="ngModel"/>
+        <mat-error *ngIf="phone.dirty && phone.hasError('required')">
+          Phone is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="phone.dirty && phone.hasError('pattern')">
+          Phone number must be <strong>a french number</strong>
+        </mat-error>
       </mat-form-field>
     </p>
 
     <p>
-      <mat-checkbox [(ngModel)]="model.isManager" name="isManager"
-        >Manager</mat-checkbox
-      >
+      <mat-checkbox [(ngModel)]="model.isManager" name="isManager">Manager</mat-checkbox>
     </p>
 
     <!-- required by API, so we put static content which is not editable but sent to the API -->
-    <input type="hidden" [ngModel]="model.entity" name="entity" />
+    <input type="hidden" [ngModel]="model.entity" name="entity">
   </form>
 </mat-dialog-content>
 
+
 <mat-dialog-actions align="end">
   <button mat-button type="button" (click)="cancel()">Cancel</button>
-  <button mat-button color="primary" type="submit" (click)="submit()">
-    Save
-  </button>
+  <button mat-button color="primary" type="submit" (click)="submit()" [disabled]="f.invalid">Save</button>
 </mat-dialog-actions>

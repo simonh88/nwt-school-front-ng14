@@ -7,7 +7,7 @@
     <mat-list>
       <mat-list-item (click)="navigate(person.id)" *ngFor="let person of people" class="mat-whiteframe-2dp mat-card">
         <img matListItemAvatar src="{{ person.photo }}"/>
-        <span matListItemTitle>{{person.firstname}} {{person.lastname}} </span>
+        <span matListItemTitle>{{person.firstname}} {{person.lastname}} <span nwtBadge [person]="person"></span></span>
         <p matListItemLine>
           <span> {{person.entity}} </span> — <span>{{person.email}} </span>
         </p>

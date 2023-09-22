@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UpdateComponent } from './update/update.component';
 import { NaPipe } from './shared/pipes/na.pipe';
+import { BadgeDirective } from './shared/directives/badge.directive';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NaPipe } from './shared/pipes/na.pipe';
     FormComponent,
     UpdateComponent,
     NaPipe,
+    BadgeDirective,
   ],
   imports: [
     BrowserModule,

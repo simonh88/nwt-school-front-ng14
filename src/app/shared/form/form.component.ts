@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { Person } from '../types/person.type';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from './custom-validators';
 
 @Component({
   selector: 'nwt-form',
@@ -153,7 +154,10 @@ export class FormComponent implements OnInit, OnChanges {
         Validators.compose([Validators.required, Validators.minLength(2)])
       ),
       entity: new FormControl(),
-      email: new FormControl('', Validators.required),
+      email: new FormControl(
+        '',
+        Validators.compose([Validators.required, CustomValidators.googleEmail])
+      ),
       phone: new FormControl(
         '',
         Validators.compose([

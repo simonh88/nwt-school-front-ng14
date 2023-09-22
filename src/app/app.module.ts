@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UpdateComponent } from './update/update.component';
+import { NaPipe } from './shared/pipes/na.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { UpdateComponent } from './update/update.component';
     DialogComponent,
     FormComponent,
     UpdateComponent,
+    NaPipe,
   ],
   imports: [
     BrowserModule,

@@ -1,76 +1,75 @@
-<h2 mat-dialog-title *ngIf="isUpdateMode">Update {{ model.firstname }} {{ model.lastname }}</h2>
+<h2 mat-dialog-title *ngIf="isUpdateMode">Update {{ form.get('firstname')?.value }} {{ form.get('lastname')?.value }}</h2>
 <h2 mat-dialog-title *ngIf="!isUpdateMode">Create new person</h2>
 
 <mat-dialog-content>
-  <form novalidate #f="ngForm">
+  <form novalidate [formGroup]="form">
 
     <p *ngIf="isUpdateMode">
-      <mat-form-field class="full-width">
-        <input matInput placeholder="ID (disabled)" disabled  name="id" [ngModel]="model.id" />
-      </mat-form-field>
+      <span style="width:100%">ID (disabled)</span><br/>
+      <span style="width:100%">{{model.id}}</span>
     </p>
 
     <table class="full-width" cellspacing="0">
       <tr>
         <td>
-          <mat-form-field class="full-width" [class.mgb15]="firstname.dirty && firstname.invalid">
-            <input matInput placeholder="First name" [(ngModel)]="model.firstname" minlength="2" required name="firstname" #firstname="ngModel"/>
-            <mat-error *ngIf="firstname.dirty && firstname.hasError('required')">
+          <mat-form-field class="full-width" [class.mgb15]="form.get('firstname')?.dirty && form.get('firstname')?.invalid">
+            <input matInput placeholder="First name" formControlName="firstname" minlength="2" required name="firstname" />
+            <mat-error *ngIf="form.get('firstname')?.dirty && form.get('firstname')?.hasError('required')">
               First name is <strong>required</strong>
             </mat-error>
-            <mat-error *ngIf="firstname.dirty && firstname.hasError('minlength')">
+            <mat-error *ngIf="form.get('firstname')?.dirty && form.get('firstname')?.hasError('minlength')">
               First name is <strong>2 chars min</strong>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Last Name" [(ngModel)]="model.lastname" minlength="2" required name="lastname" #lastname="ngModel"/>
-            <mat-error *ngIf="lastname.dirty && lastname.hasError('required')">
+            <input matInput placeholder="Last Name" formControlName="lastname" minlength="2" required name="lastname" />
+            <mat-error *ngIf="form.get('lastname')?.dirty && form.get('lastname')?.hasError('required')">
               Last name is <strong>required</strong>
             </mat-error>
-            <mat-error *ngIf="lastname.dirty && lastname.hasError('minlength')">
+            <mat-error *ngIf="form.get('lastname')?.dirty && form.get('lastname')?.hasError('minlength')">
               Last name is <strong>2 chars min</strong>
             </mat-error>
           </mat-form-field>
         </td>
         <td class="align-right">
           <!-- not required by API, so we put static content which is not editable and not sent to the API -->
-          <img width="112" [src]="model.photo"/>
+          <img width="112" [src]="form.get('photo')?.value"/>
         </td>
       </tr>
     </table>
 
     <p>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Email" [(ngModel)]="model.email" required name="email" #email="ngModel"/>
-        <mat-error *ngIf="email.dirty && email.hasError('required')">
+        <input matInput placeholder="Email" formControlName="email" required name="email" />
+        <mat-error *ngIf="form.get('email')?.dirty && form.get('email')?.hasError('required')">
           Email is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </p>
 
-    <p ngModelGroup="address">
+    <p formGroupName="address">
       <mat-form-field class="full-width">
-        <input matInput placeholder="Address" [(ngModel)]="model.address.street" required name="street" #street="ngModel"/>
-        <mat-error *ngIf="street.dirty && street.hasError('required')">
+        <input matInput placeholder="Address" formControlName="street" required name="street"/>
+        <mat-error *ngIf="form.get('address')?.get('street')?.dirty && form.get('address')?.get('street')?.hasError('required')">
           Address is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </p>
 
-    <table class="full-width" cellspacing="0" ngModelGroup="address">
+    <table class="full-width" cellspacing="0" formGroupName="address">
       <tr>
         <td>
           <mat-form-field class="full-width">
-            <input matInput placeholder="City" [(ngModel)]="model.address.city" required name="city" #city="ngModel"/>
-            <mat-error *ngIf="city.dirty && city.hasError('required')">
+            <input matInput placeholder="City" formControlName="city" required name="city"/>
+            <mat-error *ngIf="form.get('address')?.get('city')?.dirty && form.get('address')?.get('city')?.hasError('required')">
               City is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </td>
         <td>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Postal Code" [(ngModel)]="model.address.postalCode" required name="postalCode" #postalCode="ngModel"/>
-            <mat-error *ngIf="postalCode.dirty && postalCode.hasError('required')">
+            <input matInput placeholder="Postal Code" formControlName="postalCode" required name="postalCode"/>
+            <mat-error *ngIf="form.get('address')?.get('postalCode')?.dirty && form.get('address')?.get('postalCode')?.hasError('required')">
               Postal Code is <strong>required</strong>
             </mat-error>
           </mat-form-field>
@@ -80,27 +79,27 @@
 
     <p>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Phone (ex: 0612345678)" [(ngModel)]="model.phone" pattern="(0|\+33)\d{9}" required name="phone" #phone="ngModel"/>
-        <mat-error *ngIf="phone.dirty && phone.hasError('required')">
+        <input matInput placeholder="Phone (ex: 0612345678)" formControlName="phone" required name="phone" />
+        <mat-error *ngIf="form.get('phone')?.dirty && form.get('phone')?.hasError('required')">
           Phone is <strong>required</strong>
         </mat-error>
-        <mat-error *ngIf="phone.dirty && phone.hasError('pattern')">
+        <mat-error *ngIf="form.get('phone')?.dirty && form.get('phone')?.hasError('pattern')">
           Phone number must be <strong>a french number</strong>
         </mat-error>
       </mat-form-field>
     </p>
 
     <p>
-      <mat-checkbox [(ngModel)]="model.isManager" name="isManager">Manager</mat-checkbox>
+      <mat-checkbox formControlName="isManager" name="isManager" (change)="isManagerChecked($event.checked)">Manager</mat-checkbox>
     </p>
 
     <!-- required by API, so we put static content which is not editable but sent to the API -->
-    <input type="hidden" [ngModel]="model.entity" name="entity">
+    <input type="hidden" formControlName="entity" name="entity">
   </form>
 </mat-dialog-content>
 
 
 <mat-dialog-actions align="end">
   <button mat-button type="button" (click)="cancel()">Cancel</button>
-  <button mat-button color="primary" type="submit" (click)="submit()" [disabled]="f.invalid">Save</button>
+  <button mat-button color="primary" type="submit" (click)="submit(form.value)" [disabled]="form.invalid">Save</button>
 </mat-dialog-actions>

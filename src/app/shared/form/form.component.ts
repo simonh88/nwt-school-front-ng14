@@ -1,10 +1,17 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Person } from '../types/person.type';
 
 @Component({
   selector: 'nwt-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit, OnChanges {
   // private property to store update mode flag
@@ -67,8 +74,7 @@ export class FormComponent implements OnInit, OnChanges {
   /**
    * OnInit implementation
    */
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * Function to handle component update
@@ -88,9 +94,9 @@ export class FormComponent implements OnInit, OnChanges {
         address: {
           postalCode: '',
           street: '',
-          city: ''
+          city: '',
         },
-        isManager: false
+        isManager: false,
       };
       this._isUpdateMode = false;
     }

@@ -2,28 +2,37 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PersonComponent } from './person/person.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { PeopleComponent } from './people/people.component';
 import { CardComponent } from './shared/card/card.component';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { FormComponent } from './shared/form/form.component';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { UpdateComponent } from './update/update.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent, DialogComponent, FormComponent, UpdateComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    PersonComponent,
+    PeopleComponent,
+    CardComponent,
+    DialogComponent,
+    FormComponent,
+    UpdateComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -38,10 +47,9 @@ import { UpdateComponent } from './update/update.component';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

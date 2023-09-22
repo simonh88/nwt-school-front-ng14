@@ -39,11 +39,8 @@ export class PeopleComponent implements OnInit {
     // @ts-ignore
     Object.keys(environment.backend.endpoints).forEach(
       (k) =>
-        (this._backendURL[k] = `${baseUrl}${
-          environment.backend.endpoints[
-            k as keyof typeof environment.backend.endpoints
-          ]
-        }`)
+        // @ts-ignore
+        (this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`)
     );
   }
 

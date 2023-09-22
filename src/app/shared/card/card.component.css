@@ -37,11 +37,12 @@ mat-card-title span {
 }
 
 mat-card-subtitle.contact-info {
-  margin-top: -7px;
+  margin-top: 4px;
   height: 20px;
 }
 
 mat-card-title-group {
+  padding: 10px;
   margin-bottom: 20px;
 }
 

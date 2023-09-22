@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Person } from '../shared/types/person.type';
+import { filter, map, mergeMap, Observable } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Observable, defaultIfEmpty, filter, map, mergeMap } from 'rxjs';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 import { PeopleService } from '../shared/services/people.service';
-import { Person } from '../shared/types/person.type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'nwt-people',
@@ -17,16 +18,20 @@ export class PeopleComponent implements OnInit {
   private _dialogStatus: string;
   // private property to store dialog reference
   private _peopleDialog: MatDialogRef<DialogComponent, Person> | undefined;
+  // private property to store view value
+  private _view: string;
 
   /**
    * Component constructor
    */
   constructor(
+    private _router: Router,
     private _peopleService: PeopleService,
     private _dialog: MatDialog
   ) {
     this._people = [];
     this._dialogStatus = 'inactive';
+    this._view = 'card';
   }
 
   /**
@@ -44,15 +49,18 @@ export class PeopleComponent implements OnInit {
   }
 
   /**
+   * Returns private property _view
+   */
+  get view(): string {
+    return this._view;
+  }
+
+  /**
    * OnInit implementation
    */
   ngOnInit(): void {
     this._peopleService
       .fetch()
-      .pipe(
-        filter((people: Person[]) => !!people),
-        defaultIfEmpty([])
-      )
       .subscribe({ next: (people: Person[]) => (this._people = people) });
   }
 
@@ -88,6 +96,7 @@ export class PeopleComponent implements OnInit {
         filter((person: Person | undefined) => !!person),
         map((person: Person | undefined) => {
           // delete obsolete attributes in original object which are not required in the API
+          delete person?.id;
           delete person?.photo;
 
           return person;
@@ -99,6 +108,20 @@ export class PeopleComponent implements OnInit {
         error: () => (this._dialogStatus = 'inactive'),
         complete: () => (this._dialogStatus = 'inactive'),
       });
+  }
+
+  /**
+   * Function to switch view
+   */
+  switchView(): void {
+    this._view = this._view === 'card' ? 'list' : 'card';
+  }
+
+  /**
+   * Function to navigate to current person
+   */
+  navigate(id: string | undefined): void {
+    this._router.navigate(['/person', id]);
   }
 
   /**

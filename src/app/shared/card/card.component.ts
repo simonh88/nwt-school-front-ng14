@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Person } from '../types/person.type';
+import { Router } from '@angular/router';
+import { filter, of } from 'rxjs';
 
 @Component({
   selector: 'nwt-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
   // private property to store person value
@@ -15,7 +17,7 @@ export class CardComponent implements OnInit {
   /**
    * Component constructor
    */
-  constructor() {
+  constructor(private _router: Router) {
     this._person = {} as Person;
     this._delete$ = new EventEmitter<Person>();
   }
@@ -45,13 +47,23 @@ export class CardComponent implements OnInit {
   /**
    * OnInit implementation
    */
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * Function to emit event to delete current person
    */
   delete(person: Person): void {
     this._delete$.emit(person);
+  }
+
+  /**
+   * Function to navigate to manager details
+   */
+  goToManagerIfExist(): void {
+    of(this._person.managerId)
+      .pipe(filter((managerId: string | undefined) => !!managerId))
+      .subscribe((managerId: string | undefined) =>
+        this._router.navigate(['/person', managerId])
+      );
   }
 }

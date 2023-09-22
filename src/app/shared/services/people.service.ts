@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Person } from '../types/person.type';
 import { defaultIfEmpty, filter, map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+import { Person } from '../types/person.type';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +45,13 @@ export class PeopleService {
         // @ts-ignore
         (this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`)
     );
+  }
+
+  /**
+   * Returns private property _defaultPerson
+   */
+  get defaultPerson(): Person {
+    return this._defaultPerson;
   }
 
   /**

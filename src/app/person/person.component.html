@@ -2,6 +2,6 @@
   <nwt-card [person]="person"></nwt-card>
 </section>
 
-<button mat-fab (click)="random()">
+<button mat-fab (click)="random()" *ngIf="!isPerson">
   <i class="material-icons">autorenew</i>
 </button>

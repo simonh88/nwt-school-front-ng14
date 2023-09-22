@@ -28,7 +28,7 @@
   <mat-card-content>
     <div class="contact-info">
       Manager&nbsp;:&nbsp;
-      <a href="javascript:void(0);">{{ person.manager | na }}</a>
+      <a class="managerLink" (click)="goToManagerIfExist()">{{ person.manager | na }}</a>
     </div>
     <div class="contact-info">
       Location&nbsp;:&nbsp;<a href="javascript:void(0);">DEVLAND</a>

@@ -20,7 +20,6 @@ mat-card,
 mat-list-item {
   color: rgba(0, 0, 0, 0.87);
   background-color: white;
-  margin: 10px;
   width: 360px;
 }
 
@@ -39,6 +38,7 @@ mat-list-item {
 
 mat-card-title {
   margin-left: 10px;
+  margin-top: 10px;
   margin-bottom: 0;
 }
 

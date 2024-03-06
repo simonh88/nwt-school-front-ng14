@@ -1,7 +1,7 @@
 <section>
   <mat-card class="mat-whiteframe-2dp">
     <mat-card-title-group>
-      <img mat-card-md-image src="{{ person.photo }}">
+      <img mat-card-md-image src="{{ person.photo }}" />
       <mat-card-title>
         <a href="javascript:void(0);">
           <span>{{ person.firstname }} {{ person.lastname }}</span>
@@ -10,14 +10,21 @@
       <mat-card-subtitle>{{ person.entity }}</mat-card-subtitle>
       <mat-card-subtitle class="contact-info">
         <mat-icon svgIcon="icon-mail"></mat-icon>
-        <a href="mailto:{{ person.firstname }} {{ person.lastname }}&lt;{{ person.email }}&gt;"
-           title="Send an email to {{ person.firstname }} {{ person.lastname }}" class="truncate">{{ person.email }}</a>
+        <a
+          href="mailto:{{ person.firstname }} {{ person.lastname }}&lt;{{
+            person.email
+          }}&gt;"
+          title="Send an email to {{ person.firstname }} {{ person.lastname }}"
+          class="truncate"
+          >{{ person.email }}</a
+        >
       </mat-card-subtitle>
       <mat-card-subtitle class="contact-info">
         <mat-icon svgIcon="icon-phone"></mat-icon>
-        <a href="tel:{{ person.phone }}" title="Call {{ person.firstname }}">{{ person.phone }}</a>
+        <a href="tel:{{ person.phone }}" title="Call {{ person.firstname }}">{{
+          person.phone
+        }}</a>
       </mat-card-subtitle>
-
     </mat-card-title-group>
     <mat-card-content>
       <div class="contact-info">

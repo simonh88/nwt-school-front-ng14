@@ -45,7 +45,7 @@
           Email is <strong>required</strong>
         </mat-error>
         <mat-error *ngIf="form.get('email')?.dirty && !form.get('email')?.hasError('required') && form.get('email')?.hasError('googleEmail')">
-          Invalid email <strong>(ex: name.firstname@gmail.com)</strong>
+          Invalid email <strong>(ex: name.firstname&#64;gmail.com)</strong>
         </mat-error>
       </mat-form-field>
     </p>

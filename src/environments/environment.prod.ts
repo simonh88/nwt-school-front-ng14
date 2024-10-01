@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   backend: {
     protocol: 'http',
-    host: '0.0.0.0',
+    host: 'localhost',
     port: '3000',
     endpoints: {
       allPeople: '/people',

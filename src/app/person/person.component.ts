@@ -7,7 +7,7 @@ import { defaultIfEmpty, filter } from 'rxjs';
 @Component({
   selector: 'nwt-person',
   templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css']
+  styleUrls: ['./person.component.css'],
 })
 export class PersonComponent implements OnInit {
   // private property to store person value
@@ -30,7 +30,14 @@ export class PersonComponent implements OnInit {
 
     // build all backend urls
     // @ts-ignore
-    Object.keys(environment.backend.endpoints).forEach((k: string) => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
+    Object.keys(environment.backend.endpoints).forEach(
+      (k: string) =>
+        (this._backendURL[k] = `${baseUrl}${
+          environment.backend.endpoints[
+            k as keyof typeof environment.backend.endpoints
+          ]
+        }`)
+    );
   }
 
   /**
